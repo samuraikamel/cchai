@@ -1,7 +1,16 @@
 #pragma once
 
-struct Screen {};
+#include <stdio.h>
+struct Screen
+{
+	int height;
+	bool is_active;
+	FILE* restrict stream;
+};
 
-struct Screen new_screen();
+const struct Screen new_screen();
 
-void run_screen(const struct Screen *screen);
+void update_screen(const char *string, struct Screen *screen);
+
+void start_screen(struct Screen *screen);
+void stop_screen(struct Screen *screen);
